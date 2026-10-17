@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c0b0d">
+<title>Xphi — présentation</title>
+<link rel="icon" href="identite/favicon.svg" type="image/svg+xml">
+<script src="shared/oeil.js"></script>
+<style>
+/* La porte d'entrée : quatre choses à voir, dans la DA des deux pilules (nuit, craie, laiton). */
+@font-face { font-family: "DotGothic16"; src: url("pilules/fonts/dotgothic16-latin.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("pilules/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("pilules/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+:root {
+  --nuit: #0c0b0d; --craie: #f1e9dc; --gris: #8f877b; --filet: #2b2826;
+  --labo: #8fc0d6; --laiton: #d7a548; --bleu: #6f9cf0; --rouge: #e2675b;
+  --pix: "DotGothic16", "IBM Plex Mono", monospace;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--nuit); }
+body {
+  margin: 0; color: var(--craie); font: 16px/1.6 var(--mono);
+  background: radial-gradient(ellipse 90% 60% at 50% 0%, #121a2a 0%, var(--nuit) 70%) no-repeat, var(--nuit);
+  min-height: 100vh;
+}
+body::after { /* la trame d'écran */
+  content: ""; position: fixed; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+}
+main { max-width: 1120px; margin: 0 auto; padding: 56px 16px 72px; }
+header { display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: center; }
+#oeil { width: 120px; color: var(--craie); }
+#oeil svg { width: 100%; height: auto; display: block; }
+.surtitre { font: 500 13px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; color: var(--laiton); margin: 0 0 14px; }
+h1 { font: 400 clamp(44px, 7vw, 76px)/1 var(--pix); margin: 0; letter-spacing: .02em; }
+.chapo { font-size: clamp(16px, 1.8vw, 19px); line-height: 1.6; max-width: 60ch; margin: 18px 0 0; color: var(--craie); }
+.chapo .b { color: var(--bleu); } .chapo .r { color: var(--rouge); }
+/* le dossier de présentation (dossier.html) : un lien, hors de la grille des quatre cartes */
+.dossier { margin: 24px 0 0; }
+.dossier a {
+  display: inline-block; padding: 12px 16px; border: 2px solid var(--laiton); text-decoration: none;
+  font: 500 13px/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--craie);
+  transition: border-color .15s ease, color .15s ease;
+}
+.dossier a:hover, .dossier a:focus-visible { border-color: var(--labo); color: var(--labo); }
+.cartes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 56px; }
+.carte {
+  display: flex; flex-direction: column; text-decoration: none; color: inherit;
+  background: rgba(12,11,13,.92); border: 3px solid var(--craie); outline: 2px solid var(--laiton); outline-offset: 5px;
+  margin: 7px; transition: transform .15s ease, border-color .15s ease;
+}
+.carte:hover, .carte:focus-visible { transform: translateY(-3px); border-color: var(--labo); }
+.carte img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; border-bottom: 2px solid var(--filet); }
+.carte .corps { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.carte .num { font: 500 12px/1 var(--mono); letter-spacing: .16em; color: var(--laiton); text-transform: uppercase; }
+.carte h2 { font: 400 26px/1.15 var(--pix); margin: 0; }
+.carte p { margin: 0; font-size: 14px; line-height: 1.55; color: #d6cebf; }
+.carte .aller { margin-top: auto; padding-top: 10px; font: 500 13px/1 var(--mono); letter-spacing: .1em; color: var(--labo); text-transform: uppercase; }
+footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--filet); font-size: 12px; color: var(--gris); line-height: 1.6; }
+@media (max-width: 900px) { .cartes { grid-template-columns: 1fr; max-width: 560px; } }
+@media (max-width: 560px) { header { grid-template-columns: 72px 1fr; gap: 18px; } #oeil { width: 72px; } main { padding-top: 32px; } }
+@media (prefers-reduced-motion: reduce) { .carte, .dossier a { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div id="oeil" data-oeil aria-hidden="true"></div>
+    <div>
+      <p class="surtitre">Xphi · philosophie expérimentale</p>
+      <h1>XPHI</h1>
+      <p class="chapo">Une émission où l’on fait des expériences de pensée pour de vrai. Elle est présentée par Phi, une intelligence artificielle qui étudie la morale des humains. Premier test&nbsp;: <span class="b">la pilule bleue</span> ou <span class="r">la pilule rouge</span>.</p>
+      <p class="dossier"><a href="dossier.html">Le dossier de présentation →</a></p>
+    </div>
+  </header>
+
+  <section class="cartes" aria-label="À voir">
+    <a class="carte" href="episode-pilules/">
+      <img src="img/episode.jpg" alt="Alice, le cent-unième sujet, seule dans sa pièce, et l’anneau des bleus tendu vers elle" width="960" height="540">
+      <div class="corps">
+        <span class="num">1 · l’épisode · 15 min 50</span>
+        <h2>Les deux pilules</h2>
+        <p>L’épisode entier, en animatique, d’après le script de Thibaut&nbsp;: le test, Kant, les deux variantes, les résultats, le méta-dilemme. Avec la voix de Phi et la musique de La Grande Table. Prototype&nbsp;: les pays restent à mesurer, les messages des réseaux sont inventés.</p>
+        <span class="aller">Voir l’épisode →</span>
+      </div>
+    </a>
+    <a class="carte" href="pilules/">
+      <img src="img/exp.jpg" alt="Cent sujets en pixels, bleus et rouges, sous l’œil de Phi" width="960" height="540">
+      <div class="corps">
+        <span class="num">2 · l’expérience · interactive</span>
+        <h2>Le test</h2>
+        <p>Les règles, le test de compréhension, puis votre choix&nbsp;: bleue ou rouge. Ce que vivrait un participant. Espace pour avancer.</p>
+        <span class="aller">Passer le test →</span>
+      </div>
+    </a>
+    <a class="carte" href="resultats-pilules/">
+      <img src="img/resultats.jpg" alt="Les deux jauges : 65,5 % de bleues avec la description A, 12,6 % avec la B, 53 points d’écart" width="960" height="540">
+      <div class="corps">
+        <span class="num">3 · les résultats · douze écrans</span>
+        <h2>Ce que les mots ont fait</h2>
+        <p>La même règle, décrite de deux façons&nbsp;: 65,5&nbsp;% de bleues avec l’une, 12,6&nbsp;% avec l’autre. Puis les prédictions, « même situation&nbsp;? », « plus ou moins trompeuse&nbsp;? », le méta-dilemme. Par Thibaut, avec les chiffres de sa vidéo. Espace pour avancer.</p>
+        <span class="aller">Voir les résultats →</span>
+      </div>
+    </a>
+    <a class="carte" href="identite/phi.html">
+      <img src="img/phi.jpg" alt="La fiche de personnage de Phi, son œil-diaphragme" width="960" height="540">
+      <div class="corps">
+        <span class="num">4 · l’identité</span>
+        <h2>Qui est Phi&nbsp;?</h2>
+        <p>La fiche de personnage&nbsp;: son origine, ce qu’elle ignore, son corps et sa voix, sa façon de parler. Et la planche d’identité de l’émission.</p>
+        <span class="aller">Rencontrer Phi →</span>
+      </div>
+    </a>
+  </section>
+
+  <footer>
+    Xphi · prototype, octobre 2026 · NES · le dilemme des deux pilules d’après le questionnaire «&nbsp;A ou B&nbsp;?&nbsp;» de Monsieur Phi.
+    Les chiffres sont ceux du questionnaire de Monsieur Phi (ceux des pays restent à mesurer). Au clavier, dans l’épisode&nbsp;: espace = lecture/pause, ← → = 5 s, C = la barre de temps.
+  </footer>
+</main>
+</body>
+</html>

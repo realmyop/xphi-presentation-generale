@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c0b0d">
+<title>Xphi — le dossier de présentation</title>
+<meta name="description" content="Le dossier de présentation de Xphi pour Arte : le projet, la philosophie expérimentale, Phi, le site et l’émission, l’équipe, et ce que donne déjà l’épisode des deux pilules.">
+<link rel="icon" href="identite/favicon.svg" type="image/svg+xml">
+<style>
+/* Le dossier de présentation pour Arte (le PDF du 13 octobre), en page web : la couverture de nuit, puis des feuilles
+   claires, numéros de partie en or. Sur grand écran, une suite de pages ; sur téléphone, une colonne ; à l'impression,
+   cinq pages A4. --u vaut un point du PDF : toutes les mesures en sont des multiples (1,5 px à l'écran, 1 pt imprimé).
+   Inter (SIL OFL) servie depuis shared/fonts/, comme la planche d'identité : aucun appel externe. */
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("shared/fonts/inter-latin-opsz-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2190-2199, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("shared/fonts/inter-latin-ext-opsz-normal.woff2") format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter"; font-style: italic; font-weight: 100 900; font-display: swap;
+  src: url("shared/fonts/inter-latin-opsz-italic.woff2") format("woff2");
+}
+:root {
+  --u: 1.5px;
+  --nuit: #0c0a0d; --craie: #f1e9dc; --craie-2: #c9c6be; --labo: #8fc0d6; --laiton: #d7a548;
+  --papier: #fafaf6; --encre: #16181d; --gris: #5b6170; --or: #b8892b;
+  --boite: #111217; --boite-txt: #c9c6be; --carte: #ffffff; --bord: #e3e1db;
+  --pastille: #f1e9d9; --pastille-txt: #7a5a17; --lien: #8fb6ff;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: #0c0b0d; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; font-family: var(--sans); color: var(--craie);
+  background: radial-gradient(ellipse 90% 40% at 50% 0%, #121a2a 0%, #0c0b0d 70%) no-repeat, #0c0b0d;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+img { display: block; max-width: 100%; height: auto; }
+b, strong { font-weight: 650; }
+
+/* --- autour des feuilles : le retour à l'accueil (écran seulement) ----------------------------------------------- */
+.haut, .retour { width: calc(595 * var(--u)); max-width: 100%; margin: 0 auto; padding: 22px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  font: 500 13px/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: #8f877b; }
+.haut a, .retour a { color: var(--laiton); text-decoration: none; border-bottom: 1px solid transparent; }
+.haut a:hover, .haut a:focus-visible, .retour a:hover, .retour a:focus-visible { border-bottom-color: currentColor; }
+.retour { padding: 4px 0 48px; }
+
+/* --- la feuille ---------------------------------------------------------------------------------------------------- */
+.feuille {
+  width: calc(595 * var(--u)); min-height: calc(842 * var(--u)); margin: 0 auto 36px;
+  padding: calc(64 * var(--u)) calc(62.4 * var(--u)) calc(28 * var(--u));
+  background: var(--papier); color: var(--encre); display: flex; flex-direction: column;
+  font-size: calc(10 * var(--u)); line-height: 1.5; box-shadow: 0 24px 70px -24px rgba(0, 0, 0, .8);
+}
+.feuille p { margin: 0 0 calc(7.5 * var(--u)); }
+.feuille section + section { margin-top: calc(22 * var(--u)); }
+.pied { margin-top: auto; padding-top: calc(8 * var(--u)); border-top: 1px solid var(--bord); display: flex; justify-content: space-between; gap: 1em;
+  font-size: calc(8 * var(--u)); line-height: 1.4; color: var(--gris); }
+.contenu { flex: 1 0 auto; padding-bottom: calc(16 * var(--u)); }
+
+h2 { font: 700 calc(17 * var(--u))/1.25 var(--sans); letter-spacing: -.015em; margin: 0 0 calc(10 * var(--u)); }
+h2 .num { color: var(--or); font-weight: 500; letter-spacing: 0; margin-right: .1em; }
+h3 { font: 700 calc(11 * var(--u))/1.4 var(--sans); margin: calc(13 * var(--u)) 0 calc(4 * var(--u)); }
+.chapeau { font-size: calc(12 * var(--u)); line-height: 1.5; }
+.note { font-size: calc(9 * var(--u)); line-height: 1.5; color: var(--gris); }
+.or { color: var(--or); }
+
+/* --- la couverture ------------------------------------------------------------------------------------------------- */
+.couverture { background: var(--nuit); color: var(--craie); padding-top: calc(60 * var(--u)); outline: 1px solid #2b2826; }
+.couverture h1 { margin: 0; display: flex; align-items: center; gap: calc(11 * var(--u)); font: 300 calc(84 * var(--u))/1 var(--sans); letter-spacing: -.01em; color: var(--craie); }
+.couverture h1 svg { width: calc(118.5 * var(--u)); height: calc(118.5 * var(--u)); flex: none; color: var(--craie); overflow: visible; }
+.sous-titre { margin: calc(22 * var(--u)) 0 0 !important; font-size: calc(15 * var(--u)); line-height: 1.5; color: var(--craie-2); max-width: calc(460 * var(--u)); }
+.accroche { margin: calc(60 * var(--u)) 0 0 !important; font: 500 calc(17 * var(--u))/1.41 var(--sans); letter-spacing: -.005em; max-width: calc(400 * var(--u)); }
+.accroche em { font-style: normal; color: var(--or); }
+.signatures { margin-top: auto; font-size: calc(10 * var(--u)); line-height: 1.8; color: var(--craie-2); padding-bottom: calc(4 * var(--u)); }
+.signatures p { margin: 0; }
+.signatures b { color: #f3f1ec; font-weight: 650; }
+.couverture .pied { margin-top: 0; border-top-color: #2b2a2e; color: #8b909c; }
+
+/* --- encadrés ------------------------------------------------------------------------------------------------------ */
+.deux { display: grid; grid-template-columns: 1fr 1fr; gap: calc(17 * var(--u)); }
+.trois { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(13 * var(--u)); }
+.chiffres { margin: calc(10 * var(--u)) 0 calc(6 * var(--u)); }
+.chiffre { background: var(--boite); border-radius: calc(8 * var(--u)); padding: calc(8 * var(--u)) calc(14 * var(--u)) calc(11 * var(--u)); }
+.chiffre b { display: block; font: 750 calc(26 * var(--u))/1.2 var(--sans); letter-spacing: -.02em; color: #f3f1ec; }
+.chiffre b.or { color: var(--or); }
+.chiffre span { display: block; margin-top: calc(3 * var(--u)); font-size: calc(8.8 * var(--u)); line-height: 1.45; color: var(--boite-txt); }
+.encadres { margin: calc(6 * var(--u)) 0 0; }
+.encadre { background: var(--carte); border: 1px solid var(--bord); border-radius: calc(8 * var(--u)); padding: calc(11 * var(--u)) calc(11 * var(--u)) calc(12 * var(--u)) calc(13 * var(--u));
+  font-size: calc(9.19 * var(--u)); line-height: 1.5; }
+.encadre p { margin: 0; }
+.etiquette { font: 700 calc(8.5 * var(--u))/1.5 var(--sans) !important; letter-spacing: .1em; text-transform: uppercase; color: var(--or); margin: 0 0 calc(5 * var(--u)) !important; }
+.encadre ol { margin: calc(6 * var(--u)) 0 0; padding-left: calc(14 * var(--u)); }
+.encadre li { margin-top: calc(4.5 * var(--u)); padding-left: calc(2 * var(--u)); }
+.citation { margin: calc(10 * var(--u)) 0 0 !important; padding: calc(2 * var(--u)) 0 calc(2 * var(--u)) calc(14 * var(--u)); border-left: calc(3 * var(--u)) solid var(--or);
+  font: 500 calc(12 * var(--u))/1.5 var(--sans); }
+
+/* --- Phi -------------------------------------------------------------------------------------------------------- */
+.phi { display: grid; grid-template-columns: calc(70 * var(--u)) 1fr; gap: calc(15 * var(--u)); align-items: start; padding-bottom: calc(6 * var(--u)); }
+.phi svg { width: calc(70 * var(--u)); height: calc(70 * var(--u)); color: var(--encre); overflow: visible; margin-top: calc(-2 * var(--u)); }
+.phi .note { font-size: calc(9.19 * var(--u)); margin: 0; }
+.puces { margin: 0; padding-left: calc(13 * var(--u)); }
+.puces li { margin-bottom: calc(4.5 * var(--u)); padding-left: calc(2 * var(--u)); }
+
+/* --- les pistes, le langage visuel, l'équipe ---------------------------------------------------------------------- */
+.pistes { margin: calc(10 * var(--u)) 0 0; }
+.pistes .encadre { padding-bottom: calc(9 * var(--u)); }
+.pastille { display: inline-block; font: 600 calc(8 * var(--u))/1 var(--sans); padding: calc(3.5 * var(--u)) calc(6.5 * var(--u)); border-radius: 999px;
+  background: var(--pastille); color: var(--pastille-txt); margin-right: calc(2 * var(--u)); vertical-align: calc(.5 * var(--u)); }
+.laiton { color: var(--or); font-weight: 650; }
+.equipe { margin: calc(10 * var(--u)) 0 0; }
+.equipe h4 { font: 700 calc(11 * var(--u))/1.4 var(--sans); margin: 0; }
+.equipe .role { font-size: calc(9 * var(--u)); color: var(--gris); margin: calc(2 * var(--u)) 0 calc(6 * var(--u)) !important; }
+.prototype { margin-top: calc(16 * var(--u)); background: var(--boite); color: #e6e3dc; border-radius: calc(8 * var(--u));
+  padding: calc(11 * var(--u)) calc(12.7 * var(--u)) calc(12 * var(--u)); font-size: calc(9.19 * var(--u)); line-height: 1.5; }
+.prototype p { margin: 0; }
+.prototype a { color: var(--lien); font-weight: 650; text-decoration: none; overflow-wrap: anywhere; }
+.prototype a:hover, .prototype a:focus-visible { text-decoration: underline; }
+
+/* --- les captures ------------------------------------------------------------------------------------------------ */
+.captures { display: grid; grid-template-columns: 1fr 1fr; column-gap: calc(18 * var(--u)); row-gap: calc(14 * var(--u)); margin-top: calc(12 * var(--u)); }
+.captures figure { margin: 0; }
+.captures img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: calc(6 * var(--u)); border: 1px solid #26282e; background: #0c0b0d; }
+.captures figcaption { margin-top: calc(6 * var(--u)); font-size: calc(8.8 * var(--u)); line-height: 1.45; color: var(--gris); }
+.captures figcaption b { color: var(--encre); font-weight: 700; }
+
+/* --- écrans moins larges qu'une page : une colonne de feuilles pleine largeur ---------------------------------------- */
+@media screen and (max-width: 960px) {
+  :root { --u: 1.6px; }
+  .haut, .retour { width: auto; padding-left: 24px; padding-right: 24px; }
+  .feuille { width: auto; min-height: 0; margin: 0 0 10px; padding: 40px 24px 18px; box-shadow: none; }
+  .couverture { min-height: min(100svh, 860px); padding-top: 44px; outline: 0; }
+  .couverture h1 { font-size: min(calc(84 * var(--u)), 19vw); gap: .14em; }
+  .couverture h1 svg { width: 1.41em; height: 1.41em; }
+  .accroche, .sous-titre { max-width: 34em; }
+  .signatures { padding-top: 48px; }
+  .feuille .pied { margin-top: 20px; }
+  .couverture .pied { margin-top: 0; }
+}
+@media screen and (max-width: 760px) {
+  .trois { grid-template-columns: 1fr; }
+}
+@media screen and (max-width: 640px) {
+  .haut, .retour { padding-left: 16px; padding-right: 16px; font-size: 12px; }
+  .haut span { display: none; }
+  .feuille { padding: 32px 16px 16px; }
+  .couverture { padding-top: 32px; }
+  .deux, .captures, .phi { grid-template-columns: 1fr; }
+  .phi svg { width: 64px; height: 64px; }
+  .accroche { margin-top: 44px !important; }
+  .captures { row-gap: 22px; }
+}
+
+/* --- à l'impression : cinq pages A4, comme le PDF --------------------------------------------------------------- */
+@media print {
+  @page { size: A4; margin: 0; }
+  :root { --u: 1pt; }
+  html, body { background: none; }
+  .haut, .retour { display: none; }
+  .feuille { width: 210mm; height: 297mm; min-height: 0; margin: 0; box-shadow: none; outline: 0; overflow: hidden;
+    break-after: page; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .feuille:last-of-type { break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<nav class="haut" aria-label="Navigation"><a href="./">← La présentation</a><span>Le dossier de présentation</span></nav>
+
+<main>
+<!-- ============================== couverture ============================== -->
+<section class="feuille couverture" aria-label="Couverture">
+  <h1>
+    <!-- le symbole « objectif » de mockups/identite/marques.js (symObjectif) : l'œil de Phi, sa pupille bleue -->
+    <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="50" cy="50" r="31" stroke-width="5.2"/><g stroke-width="2.1" opacity=".9"><path d="M39.17 43.75 L66.95 27.71"/><path d="M50 37.5 L77.78 53.54"/><path d="M60.83 43.75 L60.83 75.82"/><path d="M60.83 56.25 L33.05 72.29"/><path d="M50 62.5 L22.22 46.46"/><path d="M39.17 56.25 L39.17 24.18"/></g><path d="M50 4 L50 17 M50 83 L50 96" stroke-width="5.2"/><circle cx="50" cy="50" r="4.2" fill="var(--labo)" stroke="none"/></g></svg>
+    Xphi
+  </h1>
+  <p class="sous-titre">Philosophie expérimentale · magazine de 26&nbsp;minutes + histoire jouable en ligne</p>
+  <p class="accroche">Des milliers d’Européens réfléchissent <em>en même temps</em> à la même expérience de pensée. Puis une émission leur montre ce qu’ils ont répondu — et pourquoi ça change selon un seul petit détail.</p>
+  <div class="signatures">
+    <p><b>Auteur</b> — Thibaut Giraud (Monsieur Phi)</p>
+    <p><b>Production</b> — Ronan Letoqueux · NES (Nerd Entertainment System)</p>
+    <p>Document de travail pour Arte · octobre 2026</p>
+  </div>
+  <footer class="pied"><span>Xphi</span><span>Document de discussion — non contractuel</span></footer>
+</section>
+
+<!-- ============================== page 2 : 01, 02 ============================== -->
+<section class="feuille" aria-label="Page 2">
+  <div class="contenu">
+    <section>
+      <h2><span class="num">01</span> Le projet en deux mots</h2>
+      <p class="chapeau">Chaque numéro de Xphi part d’<b>une seule question</b>&nbsp;: une expérience de pensée, posée au public sur un site volontairement sobre, où chacun fait son choix. Quelques semaines plus tard, l’émission de 26&nbsp;minutes anime l’histoire et raconte ce que l’Europe a répondu.</p>
+      <p>Le ressort&nbsp;: il existe à chaque fois <b>plusieurs versions de la même histoire</b>, qui ne diffèrent que par un détail (un mot, un point de vue, l’ordre des phrases). Chaque joueur en reçoit une, tirée au sort. Ce qui nous intéresse n’est pas «&nbsp;X&nbsp;% des gens pensent que…&nbsp;», mais <b>l’écart entre les versions</b>&nbsp;: la preuve qu’un détail suffit à faire basculer nos jugements moraux.</p>
+      <div class="deux chiffres">
+        <div class="chiffre"><b class="or">65,5&nbsp;%</b><span>choisissent A quand la règle est formulée d’une façon…</span></div>
+        <div class="chiffre"><b>12,6&nbsp;%</b><span>… et seulement 12,6&nbsp;% quand elle est formulée autrement.</span></div>
+      </div>
+      <p class="note">Questionnaire «&nbsp;des deux pilules&nbsp;» de Monsieur Phi, près de 10&nbsp;000 répondants. Même dilemme, deux formulations&nbsp;: c’est exactement le genre de résultat que Xphi met en scène.</p>
+    </section>
+    <section>
+      <h2><span class="num">02</span> La philosophie expérimentale</h2>
+      <p>Pendant longtemps, les philosophes ont raisonné à partir de leurs propres intuitions, en supposant qu’elles étaient partagées par «&nbsp;tout le monde&nbsp;». Depuis le début des années 2000, la <b>philosophie expérimentale</b> («&nbsp;X-Phi&nbsp;») va vérifier&nbsp;: elle interroge réellement les gens et mesure comment leurs intuitions se répartissent. Et elle découvre souvent qu’elles ne ressemblent pas à ce que les philosophes «&nbsp;de fauteuil&nbsp;» imaginaient.</p>
+      <div class="deux encadres">
+        <div class="encadre"><p class="etiquette">Exemple</p><p>Contrairement à une idée reçue, une large majorité des gens ne voit <b>aucune contradiction</b> à juger qu’une personne agit librement tout en étant entièrement déterminée.</p></div>
+        <div class="encadre"><p class="etiquette">À grande échelle</p><p>Le projet Moral Machine a recueilli des millions de décisions dans plus de 200&nbsp;pays sur des variantes du dilemme du tramway, avec des différences nettes selon les cultures.</p></div>
+      </div>
+      <p class="citation">Xphi ne prétend pas inventer la méthode. Il lui donne une histoire à jouer, une échelle européenne, et une émission pour en raconter les résultats.</p>
+    </section>
+  </div>
+  <footer class="pied"><span>Xphi — philosophie expérimentale</span><span>2</span></footer>
+</section>
+
+<!-- ============================== page 3 : 03, 04, 05 ============================== -->
+<section class="feuille" aria-label="Page 3">
+  <div class="contenu">
+    <section>
+      <h2><span class="num">03</span> Phi, le personnage</h2>
+      <div class="phi">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round"><circle cx="50" cy="50" r="31" stroke-width="5.2"/><g stroke-width="2.1" opacity=".9"><path d="M39.17 43.75 L66.95 27.71"/><path d="M50 37.5 L77.78 53.54"/><path d="M60.83 43.75 L60.83 75.82"/><path d="M60.83 56.25 L33.05 72.29"/><path d="M50 62.5 L22.22 46.46"/><path d="M39.17 56.25 L39.17 24.18"/></g><path d="M50 4 L50 17 M50 83 L50 96" stroke-width="5.2"/><circle cx="50" cy="50" r="4.2" fill="var(--labo)" stroke="none"/></g></svg>
+        <div>
+          <p>Le fil rouge de l’émission est <b>Phi, une intelligence artificielle</b> créée pour l’émission. Sa mission&nbsp;: comprendre la morale des humains pour pouvoir s’aligner sur elle. Elle sait tout ce qu’on peut savoir du monde… sans l’avoir jamais vécu.</p>
+          <p>Phi n’a pas de corps&nbsp;: son visage est le logo de l’émission, un <b>diaphragme d’objectif à pupille bleue</b> qui regarde, cligne, s’étonne et dessine les résultats à la craie. Ironie polie d’IA de laboratoire, curiosité d’enfant&nbsp;: elle ne juge jamais un choix.</p>
+          <p>Elle relie la philosophie à l’actualité&nbsp;: <b>aligner une IA sur nos valeurs</b>, encore faut-il les connaître. Si l’ordre des mots suffit à changer nos réponses, comment aligner une machine&nbsp;?</p>
+          <p class="note">Thibaut n’apparaît pas à l’image&nbsp;: l’émission se décline dans toutes les langues d’Arte sans doubler un présentateur. Son ton et son humour passent par Phi.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2><span class="num">04</span> Deux objets séparés, deux rôles opposés</h2>
+      <p>Le site et l’émission ne font pas le même travail, et c’est voulu&nbsp;: <b>l’un mesure, l’autre raconte</b>.</p>
+      <div class="deux encadres">
+        <div class="encadre"><p class="etiquette">Le site&nbsp;: rester neutre</p><p>C’est là que se déroule l’expérience, donc rien ne doit orienter la réponse. Le texte du questionnaire tel quel, un dessin épuré au trait, aucune image chargée d’émotion, une musique identique d’une histoire à l’autre, et on ne voit jamais ce que choisissent les autres. Sur téléphone ou ordinateur, dans les six langues d’Arte.</p></div>
+        <div class="encadre"><p class="etiquette">L’émission&nbsp;: mettre en scène</p><p>Une fois les réponses recueillies, plus besoin de neutralité&nbsp;: l’émission raconte l’histoire en <b>animation générée par le code</b>, et Phi en fait un vrai récit.</p>
+          <ol>
+            <li><b>Rejouer</b> l’histoire et dévoiler ses variantes (≈&nbsp;8&nbsp;min)</li>
+            <li><b>Les résultats</b>, chacun d’abord posé comme une devinette, puis révélé&nbsp;; écarts entre pays, âges, genres (≈&nbsp;12&nbsp;min)</li>
+            <li><b>Ce que ça veut dire</b> — et ce que les résultats ne permettent pas de dire (≈&nbsp;6&nbsp;min)</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2><span class="num">05</span> Pourquoi Arte</h2>
+      <ul class="puces">
+        <li><b>Un programme qui vit avant, pendant et après la diffusion</b>&nbsp;: la question circule sur les réseaux d’Arte, les réponses viennent de toute l’Europe, l’émission rend au public ce qu’il a donné.</li>
+        <li><b>La comparaison européenne</b>, à la manière de Karambolage, mais appliquée à nos jugements moraux&nbsp;: «&nbsp;les Français ont été plus sensibles à tel détail que les Allemands&nbsp;».</li>
+        <li><b>Un protocole honnête</b>&nbsp;: consentement explicite, aucune donnée personnelle, et des données anonymes ouvertes aux chercheurs.</li>
+      </ul>
+    </section>
+  </div>
+  <footer class="pied"><span>Xphi — philosophie expérimentale</span><span>3</span></footer>
+</section>
+
+<!-- ============================== page 4 : 06, 07, le prototype ============================== -->
+<section class="feuille" aria-label="Page 4">
+  <div class="contenu">
+    <section>
+      <h2><span class="num">06</span> Les pistes en cours</h2>
+      <p>Un prototype existe déjà en ligne (lien en bas de page), pour tester avec Thibaut les histoires, le personnage et le langage visuel.</p>
+      <div class="trois pistes">
+        <div class="encadre"><p class="etiquette">Les deux pilules</p><p>Mille humains capturés, isolés, deux pilules et une règle. Le questionnaire des 10&nbsp;000 réponses, raconté et dessiné par Phi, avec la règle formulée de deux façons.</p></div>
+        <div class="encadre"><p class="etiquette">La boucle</p><p>Liberté et responsabilité dans une journée qui recommence sans fin, façon «&nbsp;Un jour sans fin&nbsp;». Seul le joueur se souvient.</p></div>
+        <div class="encadre"><p class="etiquette">La roulette russe procréative</p><p>Inspirée de l’argument anti-nataliste de Benatar&nbsp;: un bébé endormi, un barillet… et la question de ce qu’on fait courir à quelqu’un en le faisant naître.</p></div>
+      </div>
+      <h3>Un seul langage visuel, dessiné par le code</h3>
+      <p>La direction artistique de Thibaut, commune au site et à l’émission&nbsp;: un écran de jeu rétro, la nuit, la craie, l’œil de Phi, des pilules en nuages de caractères, des sujets en pixels. Rien n’est peint ni dessiné à la main&nbsp;: <b>tout est animé par le code</b>, image par image dans le navigateur, et la version diffusée est exactement celle que le public a jouée.</p>
+      <p><span class="pastille">Le site</span> Ce langage au plus sobre&nbsp;: le texte du questionnaire tel quel, les règles qui s’écrivent, le choix. Rien qui oriente.</p>
+      <p><span class="pastille">L’émission</span> Le même langage, déployé en récit&nbsp;: un participant que l’on suit, la carte d’Europe, les deux salles, l’issue. Jamais de violence à l’image&nbsp;: quand un risque se réalise, on coupe au noir.</p>
+      <p>Une seule couleur vive appartient au joueur&nbsp;: <span class="laiton">le laiton</span>, qui marque son choix et rien d’autre.</p>
+    </section>
+    <section>
+      <h2><span class="num">07</span> Qui porte le projet</h2>
+      <div class="deux equipe">
+        <div class="encadre">
+          <h4>Thibaut Giraud</h4>
+          <p class="role">Auteur</p>
+          <p>Docteur en philosophie, il anime depuis 2016 <b>Monsieur Phi</b>, référence de la vulgarisation philosophique (415&nbsp;000+ abonnés). Auteur de <i>Curiosités philosophiques</i> (Seuil). Ses questionnaires ont déjà donné lieu à des publications scientifiques.</p>
+        </div>
+        <div class="encadre">
+          <h4>Ronan Letoqueux</h4>
+          <p class="role">Producteur · NES (Nerd Entertainment System)</p>
+          <p>Producteur du <b>Vortex</b>. Xphi en est la suite logique&nbsp;: une vulgarisation exigeante où le public ne se contente plus d’écouter, il <b>participe</b>. Il pilote la fabrication et la direction artistique.</p>
+        </div>
+      </div>
+      <div class="prototype">
+        <p class="etiquette">Voir le prototype</p>
+        <p>L’épisode, le test jouable, les résultats et la fiche de Phi&nbsp;:<br><a href="./">realmyop.github.io/xphi-presentation-generale</a></p>
+      </div>
+    </section>
+  </div>
+  <footer class="pied"><span>Xphi — philosophie expérimentale</span><span>4</span></footer>
+</section>
+
+<!-- ============================== page 5 : 08, les captures ============================== -->
+<!-- Les captures de l'épisode : episode-pilules/?t=…&rendu=1, 1920×1080 réduit en 1280×720 (98,3 s ; 81,5 s ; 543,3 s ;
+     686,3 s ; 846 s) ; celle du site : pilules/#e4. -->
+<section class="feuille" aria-label="Page 5">
+  <div class="contenu">
+    <section>
+      <h2><span class="num">08</span> Ce que ça donne déjà</h2>
+      <p>Captures du prototype en ligne, dans la direction artistique de Thibaut&nbsp;: un écran de jeu rétro, la nuit, la craie, le laiton pour le joueur, et l’œil de Phi. L’épisode dure 15&nbsp;min&nbsp;50, avec la voix de Phi et la musique de La Grande Table. Ses chiffres viennent du vrai questionnaire de Monsieur Phi (près de 10&nbsp;000 répondants), présentés comme ceux de la collecte&nbsp;; ceux des pays restent à mesurer, et les messages des réseaux sont inventés.</p>
+      <div class="captures">
+        <figure>
+          <img src="img/dossier/site.jpg" width="1280" height="720" loading="lazy" alt="Le site : cent sujets gris en pixels sous l’œil de Phi, la pilule bleue et la rouge, l’encadré des règles et la boîte de dialogue « Vous êtes cent. Vous choisissez tous en même temps, sans vous concerter. »">
+          <figcaption><b>Le site, neutre.</b> Le questionnaire tel quel&nbsp;: cent sujets, les règles qui s’écrivent, rien qui oriente.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/dossier/regles.jpg" width="1280" height="720" loading="lazy" alt="L’épisode : avec 60 % de rouges (exemple), les bleus ont disparu ; l’encadré des règles et la boîte « Si au moins la moitié prend la rouge, ceux qui ont pris la bleue meurent, seuls ceux qui ont pris la rouge survivent. »">
+          <figcaption><b>L’épisode&nbsp;: les règles.</b> Phi explique ce qui arrive selon la part de rouges, avec des exemples.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/dossier/n48.jpg" width="1280" height="720" loading="lazy" alt="Le sujet N°48 dans son isoloir, un cadenas au-dessus de lui, « choix privé », entouré de sujets marqués d’un point d’interrogation">
+          <figcaption><b>Le participant N°48.</b> Seul dans son isoloir, il choisit sans connaître le choix des autres.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/dossier/resultats.jpg" width="1280" height="720" loading="lazy" alt="Deux barres : 65,5 % de bleue avec la description A, 12,6 % avec la description B, 53 points d’écart">
+          <figcaption><b>Les résultats.</b> Mêmes règles, autres mots&nbsp;: 65,5&nbsp;% contre 12,6&nbsp;% de bleus selon la description. Cinquante-trois points d’écart.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/dossier/europe.jpg" width="1280" height="720" loading="lazy" alt="La carte d’Europe en points : Allemagne, Espagne, France, Italie et Pologne, chacune « à mesurer », et le tableau « Pays · part de bleue » encore vide">
+          <figcaption><b>Entre pays.</b> La carte d’Europe et les écarts pays par pays, encore à mesurer. Ceux qu’on connaît déjà (11&nbsp;points entre femmes et hommes, 16 entre gauche et droite) n’approchent pas les 53&nbsp;points qui séparent les deux formulations.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/dossier/issue.jpg" width="1280" height="720" loading="lazy" alt="Pour de vrai ? Avec la description A, issue incertaine ; avec la description B, la bleue perd : environ 13 morts ; le N°48 entre les deux">
+          <figcaption><b>L’issue.</b> Pour de vrai&nbsp;? Avec la description A, l’issue est incertaine&nbsp;; avec la B, la bleue perd&nbsp;: environ 13&nbsp;morts. Et le N°48&nbsp;?</figcaption>
+        </figure>
+      </div>
+    </section>
+  </div>
+  <footer class="pied"><span>Xphi — philosophie expérimentale</span><span>5</span></footer>
+</section>
+</main>
+
+<p class="retour"><a href="./">← Revenir à la présentation</a></p>
+</body>
+</html>
